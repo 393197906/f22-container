@@ -11,15 +11,16 @@ function getFileContent(filePath) {
 
 
 // 入口
-    function main({
-                      productName = "123",
-                      env = "master",
-                      version = "1.0.1",
-                      $engin = {}
-                  } = {}) {
-    const {targetDir = "./out", sourceDir = "./123", zip = true} = $engin;
+function main({
+                  productName = "123",
+                  env = "master",
+                  version = "1.0.1",
+                  port = 9001,
+                  $engin = {}
+              } = {}) {
+    const {targetDir = "./out", sourceDir = "./123", zip = false} = $engin;
 
-    const realTargetDir = path.resolve(targetDir, `${productName}-${env}-${version}`)
+    const realTargetDir = path.resolve(targetDir, `${productName}-${env}-${version}-${port}`)
 
     fse.removeSync(realTargetDir)
     fse.removeSync(realTargetDir + ".zip")
@@ -33,7 +34,7 @@ function getFileContent(filePath) {
     fse.copySync("./template", realTargetDir)
     // 写文件
     const content = getFileContent("./template/run.sh")
-    const result = mustache.render(content, {productName, env, version})
+    const result = mustache.render(content, {productName, env, version, port})
     let fd = fs.openSync(path.resolve(realTargetDir, "run.sh"), 'w');
     fs.writeFileSync(fd, result);
     fs.closeSync(fd);
@@ -45,6 +46,8 @@ function getFileContent(filePath) {
 
 
 }
+
+main()
 
 module.exports = main
 
