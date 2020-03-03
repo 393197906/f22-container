@@ -11,12 +11,12 @@ function getFileContent(filePath) {
 
 
 // 入口
-function main({
-                  productName = "123",
-                  env = "master",
-                  version = "1.0.1",
-                  $engin = {}
-              } = {}) {
+    function main({
+                      productName = "123",
+                      env = "master",
+                      version = "1.0.1",
+                      $engin = {}
+                  } = {}) {
     const {targetDir = "./out", sourceDir = "./123", zip = true} = $engin;
 
     const realTargetDir = path.resolve(targetDir, `${productName}-${env}-${version}`)
