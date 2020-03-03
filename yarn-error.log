@@ -1,0 +1,44 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add Mustache
+
+PATH: 
+  C:\Users\39319\coding\REACTStack\f22-container\node_modules\.bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Boxstarter;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_191\bin;C:\Program Files\apache-maven-3.6.0\bin;C:\Program Files\Java\jdk1.8.0_191\jre\bin;C:\Users\39319\flutter\bin;C:\Users\39319\dart-sdk\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Users\39319\AppData\Roaming\Pub\Cache\bin;C:\Users\39319\gradle-5.4.1\bin;C:\Users\39319\AppData\Local\Android\Sdk\platform-tools;C:\Users\39319\AppData\Local\Android\Sdk\tools;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Users\39319\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\39319\AppData\Local\Programs\Python\Python37-32\;C:\Users\39319\AppData\Local\Microsoft\WindowsApps;C:\Users\39319\AppData\Local\Yarn\bin;C:\Users\39319\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\39319\AppData\Local\Microsoft\WindowsApps;C:\Users\39319\AppData\Roaming\npm;C:\Program Files\Docker Toolbox;C:\Program Files\JetBrains\GoLand 2019.2.3\bin;
+
+Yarn version: 
+  1.10.1
+
+Node version: 
+  10.15.3
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.npmjs.org/Mustache: Not found
+      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:60182:18)
+      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:120166:22)
+      at Request.emit (events.js:189:13)
+      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:121138:10)
+      at Request.emit (events.js:189:13)
+      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:121060:12)
+      at Object.onceWrapper (events.js:277:13)
+      at IncomingMessage.emit (events.js:194:15)
+      at endReadableNT (_stream_readable.js:1125:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+npm manifest: 
+  {
+    "name": "f22-container",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+      "test": "node index.js"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
