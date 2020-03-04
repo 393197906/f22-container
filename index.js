@@ -33,7 +33,7 @@ function main({
     fse.copySync(path.resolve(__dirname, "./template"), realTargetDir)
     // 写文件
     const content = getFileContent(path.resolve(__dirname, "./template/run.sh"))
-    const result = mustache.render(content, {productName, env, port})
+    const result = mustache.render(content, {productName, env, port,version})
     let fd = fs.openSync(path.resolve(realTargetDir, "run.sh"), 'w');
     fs.writeFileSync(fd, result);
     fs.closeSync(fd);
