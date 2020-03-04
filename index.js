@@ -19,6 +19,10 @@ function main({
                   $engin = {}
               } = {}) {
     const {targetDir = "./out", sourceDir = "./123", zip = false} = $engin;
+    // console.log($engin);
+    // console.log(targetDir);
+    // console.log(sourceDir);
+    // return
 
     const realTargetDir = path.resolve(targetDir, `${productName}-${env}-${version}-${port}`)
 
@@ -31,9 +35,9 @@ function main({
     fse.mkdirsSync(htmlDir)
     fse.copySync(sourceDir, htmlDir)
     // copy dockfile
-    fse.copySync("./template", realTargetDir)
+    fse.copySync(path.resolve(__dirname, "./template"), realTargetDir)
     // 写文件
-    const content = getFileContent("./template/run.sh")
+    const content = getFileContent(path.resolve(__dirname, "./template/run.sh"))
     const result = mustache.render(content, {productName, env, version, port})
     let fd = fs.openSync(path.resolve(realTargetDir, "run.sh"), 'w');
     fs.writeFileSync(fd, result);
@@ -47,7 +51,7 @@ function main({
 
 }
 
-main()
+// main()
 
 module.exports = main
 

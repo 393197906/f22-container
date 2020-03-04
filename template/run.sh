@@ -1,4 +1,4 @@
-pname = "{{productName}}-{{env}}-{{version}}-{{port}}-xindong-front-deploy"
+pname="{{productName}}-{{env}}-{{version}}-{{port}}-xindong-front-deploy"
 docker stop  ${pname}
 docker rm  ${pname}
 docker rmi  ${pname}
