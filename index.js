@@ -19,7 +19,7 @@ function main({
                   $engin = {}
               } = {}) {
     const {targetDir = "./out", sourceDir = "./123", zip = false} = $engin;
-    const realTargetDir = path.resolve(targetDir, `${productName}-${env}-${port}`)
+    const realTargetDir = path.resolve(targetDir, `${productName}-${env}-${port}-${version}`)
 
     fse.removeSync(realTargetDir)
     fse.removeSync(realTargetDir + ".zip")
