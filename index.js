@@ -4,6 +4,18 @@ const fse = require("fs-extra")
 const path = require("path")
 const compressing = require('compressing');
 
+const {spawn} = require('child_process');
+
+function runCommand(command, params) {
+    const spawnObj = spawn(command, params);
+    spawnObj.stdout.on('data', (data) => {
+        console.log(`${command}${params}--->stdout:` + data);
+    });
+    spawnObj.stderr.on('data', (data) => {
+        console.error(`${command}${params}--->stderr:` + data);
+        throw new Error('失败');
+    })
+}
 
 function getFileContent(filePath) {
     return fs.readFileSync(filePath).toString()
@@ -13,13 +25,12 @@ function getFileContent(filePath) {
 // 入口
 function main({
                   productName = "noname",
-                  env = "master",
                   version = "1.0.0",
-                  port = 9001,
                   $engin = {}
               } = {}) {
-    const {targetDir = "./out", sourceDir = "./123", zip = false} = $engin;
-    const realTargetDir = path.resolve(targetDir, `${productName}-${env}-${port}-${version}`)
+
+    const {targetDir = path.resolve(__dirname, "./out"), sourceDir = "./123", zip = false} = $engin;
+    const realTargetDir = path.resolve(targetDir, `${productName}-${version}`)
 
     fse.removeSync(realTargetDir)
     fse.removeSync(realTargetDir + ".zip")
@@ -33,7 +44,7 @@ function main({
     fse.copySync(path.resolve(__dirname, "./template"), realTargetDir)
     // 写文件
     const content = getFileContent(path.resolve(__dirname, "./template/run.sh"))
-    const result = mustache.render(content, {productName, env, port, version})
+    const result = mustache.render(content, {productName, version})
     let fd = fs.openSync(path.resolve(realTargetDir, "run.sh"), 'w');
     fs.writeFileSync(fd, result);
     fs.closeSync(fd);
@@ -42,8 +53,6 @@ function main({
     if (zip) {
         compressing.zip.compressDir(realTargetDir, realTargetDir + ".zip").then(() => fse.removeSync(realTargetDir))
     }
-
-
 }
 
 // main()
